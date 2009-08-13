@@ -6,6 +6,6 @@
 
 (def *db-host* "localhost")
 (def *db-port* 3306)
-(def *db-name* "your database")
-(def *db-user* "your username")
-(def *db-password* "your database password")
+(def *db-name* "test_database")
+(def *db-user* "root")
+(def *db-password* "e2t2h5a0n")
