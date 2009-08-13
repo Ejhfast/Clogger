@@ -1,0 +1,24 @@
+Use:
+
+1. Intall Compojure and the JDBC libraries
+
+2. Add Clogger/src to your classpath.
+
+3. Edit setup.clj
+
+3. From slime:
+
+-- For First Startup --
+
+(use 'site.start)
+(first-config)
+
+-- For Normal Start (database already created) --
+
+(use 'site.start)
+(up)
+
+-- To Stop Server --
+
+(use 'site.start)
+(down)
