@@ -1,6 +1,7 @@
 (ns site.routes
   (:use [compojure])
-  (:use [site.mvc views controllers]))
+  (:use [site.mvc views controllers])
+  (:use [site.setup]))
 
 (defroutes blog-routes
   (GET "/" (home-view params session flash))
@@ -23,4 +24,4 @@
           (with-session {:type :memory, :expires 600}))
 
 (defserver myserver
-  {:port 8080} "/*" (servlet blog-routes))
+  {:port *my-port*} "/*" (servlet blog-routes))
