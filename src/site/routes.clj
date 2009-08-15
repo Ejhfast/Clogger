@@ -15,7 +15,7 @@
   (GET "/:id/update" (update-view params session))
   (POST "/:id/update" (update-controller params session))
   (GET "/:id/show" (show-view params session flash))
-  (GET "/:id/delete" (delete-controller :posts params session))
+  (POST "/delete" (delete-controller :posts params session))
   (POST "/addcomment" (add-comment params session))
   (POST "/deletecomment" (delete-controller :comments params session))
   (GET "/static/*" (or (serve-file "./static" (params :*)) :next))

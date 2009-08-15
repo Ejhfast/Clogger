@@ -1,7 +1,7 @@
 (ns site.mvc.views
   (:use [compojure])
   (:use [site.mvc.controllers])
-  (:use [site setup database style utilities]))
+  (:use [site setup database utilities]))
 
 (def my-meta [:meta {:http-equiv "Content-type" :content "text/html;charset=UTF-8"}] )
 
@@ -58,8 +58,8 @@
                       (logged?
                        session
                        (form-to [:post "/deletecomment"]
-                         (hidden-field :id (:id x))
-                         (submit-button "delete"))
+                                (hidden-field :id (:id x))
+                                (submit-button "delete"))
                        nil)]])
                   coms))))
 
@@ -82,8 +82,11 @@
               ]
              (logged? session
                       [:p {:id "post_foot"}
-                       (link-to (str "/" (x :id) "/update") "[Edit]") " "
-                       (link-to (str "/" (x :id) "/delete") "[Delete]")]
+                       (form-to [:get (str "/" (x :id) "/update")]
+                         (submit-button "update"))
+                       (form-to [:post "/delete"]
+                         (hidden-field :id (x :id))
+                         (submit-button "delete"))]
                       nil)])
           posts))
 
@@ -174,7 +177,9 @@
 (defn not-found
   []
   (html
-   nav-bar
-   def-style
-   [:title *blog-name*]
-   [:h2 "Page Not Found!"]))
+   [:html
+    tags
+    (head-setup *blog-name*)
+    [:body
+     nav-bar
+     [:h2 "Page Not Found!"]]]))
