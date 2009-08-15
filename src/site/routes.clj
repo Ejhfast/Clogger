@@ -17,7 +17,8 @@
   (GET "/:id/show" (show-view params session flash))
   (GET "/:id/delete" (delete-controller :posts params session))
   (POST "/addcomment" (add-comment params session))
-  (GET "/deletecomment/:id" (delete-controller :comments params session))
+  (POST "/deletecomment" (delete-controller :comments params session))
+  (GET "/static/*" (or (serve-file "./static" (params :*)) :next))
   (ANY "/*" (not-found)))
 
 (decorate blog-routes

@@ -7,7 +7,7 @@
        (str nm "{\n"
             (apply str
                    (map (fn [k]
-                          (str k ":" (a-map k) ";")) myks)) "}\n")))
+                          (str "\t" k ":" (a-map k) ";\n")) myks)) "}\n")))
   ([type nm a-map]
      (let [point (cond (= type :class) "."
                        (= type :id) "#"

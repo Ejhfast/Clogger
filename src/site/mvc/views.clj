@@ -12,7 +12,7 @@
      [:head
       [:title title]
       my-meta
-      def-style])
+     [:link {:href "/static/style.css" :rel "stylesheet" :type "text/css"}]])
 
 (def nav-bar
      [:div {:id "head"}
@@ -57,7 +57,9 @@
                       [:p (:body x)]
                       (logged?
                        session
-                       (link-to (str "/deletecomment/" (:id x)) "[delete]")
+                       (form-to [:post "/deletecomment"]
+                         (hidden-field :id (:id x))
+                         (submit-button "delete"))
                        nil)]])
                   coms))))
 
