@@ -1,7 +1,8 @@
 (ns site.routes
   (:use [compojure])
   (:use [site.mvc views controllers])
-  (:use [site.setup]))
+  (:use [site.setup])
+  (:use [site.extras.atom]))
 
 (defroutes blog-routes
   (GET "/" (home-view params session flash))
@@ -18,6 +19,7 @@
   (POST "/delete" (delete-controller :posts params session))
   (POST "/addcomment" (add-comment params session))
   (POST "/deletecomment" (delete-controller :comments params session))
+  (GET "/atom" (atom-view))
   (GET "/static/*" (or (serve-file "./static" (params :*)) :next))
   (ANY "/*" (not-found)))
 

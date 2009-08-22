@@ -1,7 +1,8 @@
 (ns site.mvc.views
   (:use [compojure])
   (:use [site.mvc.controllers])
-  (:use [site setup database utilities]))
+  (:use [site setup database utilities])
+  (:use [site.extras.atom]))
 
 (def my-meta [:meta {:http-equiv "Content-type" :content "text/html;charset=UTF-8"}] )
 
@@ -183,3 +184,8 @@
     [:body
      nav-bar
      [:h2 "Page Not Found!"]]]))
+
+
+(defn atom-view
+  []
+  (atom-feed *url-base* *blog-name* *user-name* (all-posts)))
