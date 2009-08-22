@@ -8,7 +8,7 @@ Use:
 
 3. From slime:
 
--- For First Startup --
+-- For First Startup (create database) --
 
 (use 'site.start)
 (first-config)
