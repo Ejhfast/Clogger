@@ -18,7 +18,8 @@
 (def nav-bar
      [:div {:id "head"}
       [:h1 *blog-name*]
-      [:h3 (link-to "/" "Home") " " (link-to "/index" "Index")]])
+      [:h3 (link-to "/" "Home") " " (link-to "/index" "Index")
+       " " (link-to "/atom" "Atom")]])
 
 ;; Forms
 
@@ -148,7 +149,8 @@
         (link-to "/logout" "[Logout]")])
      (into
      [:div {:class "left"} ]
-     (display-posts session (take 10 (all-posts))))
+     (display-posts session (take 10 (all-posts)))
+     )
      [:div {:class "right"}]]]))
 
 (defn index-view

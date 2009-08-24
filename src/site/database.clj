@@ -72,12 +72,12 @@
 (defn all-posts
   "Retreive all posts"
   []
-  (SELECT db "*" "posts"))
+  (sort-by :id  > (SELECT db "*" "posts")))
 
 (defn get-post
   "Get a post by id."
   [id]
-  (first (SELECT db "*" "posts" "1")))
+  (first (SELECT db "*" "posts" (str "id=" id))))
 
 (defn all-titles
   "Retreive all titles."
